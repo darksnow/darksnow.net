@@ -1,0 +1,115 @@
+<?
+$headTitle = 'Smilies';
+include('../../../src/header.php');
+addHeadScript('utils.js');
+?>
+<script type="text/javascript">
+function doColChange() {
+  getObj('smile').style.backgroundColor = getObj('colVal').value;
+  return false;
+}
+function doSetCol(col) {
+  getObj('colVal').value = col;
+  doColChange();
+}
+</script>
+<style type="text/css">
+#colForm { background: #000; border: 1px solid #ccc; padding: 0px;
+	position: fixed; top: 2px; right: 90px; }
+#colForm fieldset { padding: 0px; }
+#colForm span { padding: 0px 5px; font-size: 0.8em; }
+</style>
+<? closeHead(); ?>
+<body>
+<? addPageHeader('<a href="../">Toys</a> :: '.$headTitle); ?>
+<form id="colForm" onsubmit="return doColChange()">
+<fieldset>
+<caption>Colour</caption>
+<input id="colVal" value="#000000" />
+<input type="submit" value="Change" />
+</fieldset>
+<span onclick="doSetCol('#ffffff');">white</span>
+<span onclick="doSetCol('#000000');">black</span>
+<span onclick="doSetCol('#ff0000');">red</span>
+<span onclick="doSetCol('#00ff00');">green</span>
+<span onclick="doSetCol('#0000ff');">blue</span>
+<span onclick="doSetCol('#FFA500');">orange</span>
+</form>
+<div id="smile">
+<p>icon</p>
+<img src="../icon/arrow.gif" width="15" height="15" alt="Arrow" title="Arrow" />
+<img src="../icon/biggrin.gif" width="15" height="17" alt="Very Happy" title="Very Happy" />
+<img src="../icon/confused.gif" width="15" height="17" alt="Confused" title="Confused" />
+<img src="../icon/cool.gif" width="15" height="15" alt="Cool" title="Cool" />
+<img src="../icon/cry.gif" width="15" height="15" alt="Crying or Very Sad" title="Crying or Very Sad" />
+<img src="../icon/eek.gif" width="15" height="15" alt="Shocked" title="Shocked" />
+<img src="../icon/evil.gif" width="15" height="15" alt="Evil or Very Mad" title="Evil or Very Mad" />
+<img src="../icon/exclaim.gif" width="15" height="15" alt="Exclamation" title="Exclamation" />
+<img src="../icon/geek.gif" width="17" height="17" alt="Geek" title="Geek" />
+<img src="../icon/idea.gif" width="15" height="15" alt="Idea" title="Idea" />
+<img src="../icon/lol.gif" width="15" height="15" alt="Laughing" title="Laughing" />
+<img src="../icon/mad.gif" width="15" height="15" alt="Mad" title="Mad" />
+<img src="../icon/mrgreen.gif" width="15" height="15" alt="Mr. Green" title="Mr. Green" />
+<img src="../icon/neutral.gif" width="15" height="15" alt="Neutral" title="Neutral" />
+<img src="../icon/question.gif" width="15" height="15" alt="Question" title="Question" />
+<img src="../icon/razz.gif" width="15" height="15" alt="Razz" title="Razz" />
+<img src="../icon/redface.gif" width="15" height="15" alt="Embarrassed" title="Embarrassed" />
+<img src="../icon/rolleyes.gif" width="15" height="15" alt="Rolling Eyes" title="Rolling Eyes" />
+<img src="../icon/sad.gif" width="15" height="17" alt="Sad" title="Sad" />
+<img src="../icon/smile.gif" width="15" height="17" alt="Smile" title="Smile" />
+<img src="../icon/surprised.gif" width="15" height="19" alt="Surprised" title="Surprised" />
+<img src="../icon/twisted.gif" width="15" height="15" alt="Twisted Evil" title="Twisted Evil" />
+<img src="../icon/ugeek.gif" width="19" height="18" alt="Uber Geek" title="Uber Geek" />
+<img src="../icon/wink.gif" width="15" height="17" alt="Wink" title="Wink" />
+<p>system</p>
+<img src="http://www.darksnow.co.uk/images/smilies/icon_arrow.gif" width="15" height="15" alt="Arrow" title="Arrow" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_biggrin.gif" width="15" height="17" alt="Very Happy" title="Very Happy" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_confused.gif" width="15" height="17" alt="Confused" title="Confused" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_cool.gif" width="15" height="15" alt="Cool" title="Cool" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_cry.gif" width="15" height="15" alt="Crying or Very Sad" title="Crying or Very Sad" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_eek.gif" width="15" height="15" alt="Shocked" title="Shocked" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_evil.gif" width="15" height="15" alt="Evil or Very Mad" title="Evil or Very Mad" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_exclaim.gif" width="15" height="15" alt="Exclamation" title="Exclamation" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_geek.gif" width="17" height="17" alt="Geek" title="Geek" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_idea.gif" width="15" height="15" alt="Idea" title="Idea" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_lol.gif" width="15" height="15" alt="Laughing" title="Laughing" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_mad.gif" width="15" height="15" alt="Mad" title="Mad" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_mrgreen.gif" width="15" height="15" alt="Mr. Green" title="Mr. Green" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_neutral.gif" width="15" height="15" alt="Neutral" title="Neutral" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_question.gif" width="15" height="15" alt="Question" title="Question" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_razz.gif" width="15" height="15" alt="Razz" title="Razz" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_redface.gif" width="15" height="15" alt="Embarrassed" title="Embarrassed" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_rolleyes.gif" width="15" height="15" alt="Rolling Eyes" title="Rolling Eyes" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_sad.gif" width="15" height="17" alt="Sad" title="Sad" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_smile.gif" width="15" height="17" alt="Smile" title="Smile" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_surprised.gif" width="15" height="19" alt="Surprised" title="Surprised" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_twisted.gif" width="15" height="15" alt="Twisted Evil" title="Twisted Evil" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_ugeek.gif" width="19" height="18" alt="Uber Geek" title="Uber Geek" />
+<img src="http://www.darksnow.co.uk/images/smilies/icon_e_wink.gif" width="15" height="17" alt="Wink" title="Wink" />
+<p>fixed</p>
+<img src="./arrow.gif" width="15" height="15" alt="Arrow" title="Arrow" />
+<img src="./biggrin.gif" width="15" height="17" alt="Very Happy" title="Very Happy" />
+<img src="./confused.gif" width="15" height="17" alt="Confused" title="Confused" />
+<img src="./cool.gif" width="15" height="15" alt="Cool" title="Cool" />
+<img src="./cry.gif" width="15" height="15" alt="Crying or Very Sad" title="Crying or Very Sad" />
+<img src="./eek.gif" width="15" height="15" alt="Shocked" title="Shocked" />
+<img src="./evil.gif" width="15" height="15" alt="Evil or Very Mad" title="Evil or Very Mad" />
+<img src="./exclaim.gif" width="15" height="15" alt="Exclamation" title="Exclamation" />
+<img src="./geek.gif" width="17" height="17" alt="Geek" title="Geek" />
+<img src="./idea.gif" width="15" height="15" alt="Idea" title="Idea" />
+<img src="./lol.gif" width="15" height="15" alt="Laughing" title="Laughing" />
+<img src="./mad.gif" width="15" height="15" alt="Mad" title="Mad" />
+<img src="./mrgreen.gif" width="15" height="15" alt="Mr. Green" title="Mr. Green" />
+<img src="./neutral.gif" width="15" height="15" alt="Neutral" title="Neutral" />
+<img src="./question.gif" width="15" height="15" alt="Question" title="Question" />
+<img src="./razz.gif" width="15" height="15" alt="Razz" title="Razz" />
+<img src="./redface.gif" width="15" height="15" alt="Embarrassed" title="Embarrassed" />
+<img src="./rolleyes.gif" width="15" height="15" alt="Rolling Eyes" title="Rolling Eyes" />
+<img src="./sad.gif" width="15" height="17" alt="Sad" title="Sad" />
+<img src="./smile.gif" width="15" height="17" alt="Smile" title="Smile" />
+<img src="./surprised.gif" width="15" height="19" alt="Surprised" title="Surprised" />
+<img src="./twisted.gif" width="15" height="15" alt="Twisted Evil" title="Twisted Evil" />
+<img src="./ugeek.gif" width="19" height="18" alt="Uber Geek" title="Uber Geek" />
+<img src="./wink.gif" width="15" height="17" alt="Wink" title="Wink" />
+</div>
+<? addPageFooter(); ?>

@@ -15,5 +15,5 @@ host: 0.0.0.0
 markdown: kramdown
 permalink: /:categories/:title.html
 keep_files: [downloads, img, js, demo]
-exclude: [config.rb]
+exclude: [config.rb, README.md]
 

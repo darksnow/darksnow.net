@@ -1,0 +1,238 @@
+
+.thumbnail {
+  float: left;
+  margin: 0 1em 0.5em 0;
+  width: 100px;
+}
+
+time {
+  float: right;
+}
+
+.article-list article h2 {
+  border-bottom: 1px solid $complement;
+  img {
+    float: left;
+    width: 100px;
+    margin: 0 1em 1em 0;
+  }
+}
+
+.suffix {
+  padding-bottom: $spacing;
+  &:before {
+    content: ' ';
+    display: block;
+    clear: both;
+  }
+}
+.terms {
+  margin: 0;
+  padding-bottom: 0.5em;
+  &:after {
+    content: ' ';
+    display: block;
+    clear: both;
+  }
+  li {
+    float: left;
+    margin-right: $spacing / 2;
+    white-space: nowrap;
+  }
+}
+
+#about {
+  padding-top: $spacing;
+  @media screen and (min-width: $grid-collapse) {
+    div {
+      float: left;
+      width: 50%;
+    }
+    .first {
+      padding-right: $spacing / 2;
+    }
+    .second {
+      padding-left: $spacing / 2;
+    }
+  }
+}
+
+#heed {
+  width: 100%;
+  .last img {
+    vertical-align: top;
+  }
+  > div {
+    position: relative;
+    text-align: center;
+    padding: 1em;
+
+    > div {
+      margin: auto;
+
+      img {
+        width: 20%;
+        float: left;
+        padding: 2%;
+      }
+    }
+  }
+  &:after {
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+}
+
+#portfolio {
+  article {
+    float: left;
+    padding: 1em;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    @media screen and (min-width: 320px ) { width: 50%; }
+    @media screen and (min-width: 640px ) { width: 33.33333%; }
+    @media screen and (min-width: 960px ) { width: 25%; }
+    @media screen and (min-width: 1280px) { width: 20%; }
+    @media screen and (min-width: 1600px) { width: 16.66667%; }
+    @media screen and (min-width: 1920px) { width: 14.28571%; }
+    @media screen and (min-width: 2240px) { width: 12.5%; }
+    .skills {
+      position: absolute;
+      bottom: 0;
+      left: 1em;
+      right: 1em;
+      padding: 0.2em;
+      background: #000;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    h2 {
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: ($spacing / 1.2);
+      right: ($spacing / 1.2);
+      background: #000;
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+  &:after, > p {
+    content: ' ';
+    display: block;
+    clear: both;
+    margin: 1em;
+  }
+}
+#code {
+  article, .terms, .terms li, h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  > p.suffix {
+    margin-top: $spacing * 2;
+  }
+}
+#code-list article p {
+  margin-left: 120px;
+}
+#http404 {
+  padding: $spacing * 2;
+  text-align: center;
+  color: $highlight;
+  h1 {
+    border: none;
+  }
+  > div {
+    position: relative;
+    width: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: inline-block;
+    > div {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+.slides {
+  position: relative;
+  margin: 0 1em;
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 1s;
+
+    &.live {
+      opacity: 1;
+      z-index: 10;
+    }
+  }
+}
+
+.skills {
+  margin-bottom: 0.5em;
+  img {
+    height: 1em;
+  }
+  li img {
+    width: 40px;
+  }
+}
+#portfolio-entry {
+  img.title {
+    margin: 1.2em 0;
+    clear: both;
+  }
+}
+
+@media screen and (min-width: $grid-collapse) {
+  #services {
+    .first, .last {
+      float: left;
+      width: 33.33%
+    }
+    .first {
+      text-align: right;
+      margin-left: -100%;
+    }
+   .last {
+      margin-left: -33.3333%;
+    }
+  }
+  #portfolio-entry {
+    aside {
+      float: right;
+      width: 35%;
+      padding-left: $spacing;
+    }
+    img.title {
+      float: left;
+      width: 65%;
+    }
+    article {
+      margin-right: 35%;
+    }
+  }
+  #heed {
+    float: left;
+    > div {
+      margin: 0 33.3333%;
+    }
+  }
+  .slides {
+    margin: 0;
+    > div {
+      padding: 0 1em;
+    }
+  }
+}
+
+

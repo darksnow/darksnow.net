@@ -1,0 +1,176 @@
+
+/**
+ * Responsive Grid
+ */
+@media screen and (min-width: 36em) {
+  [class|="grid"] { float: left; }
+  .grid-2 {
+    width: 50%;
+    padding-right: $spacing;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  .grid-3 { width: 33.33333%; }
+}
+
+.l {
+  float: left;
+  margin: 0.2em 0.5em 0.5em 0;
+}
+.r {
+  float: right;
+  margin: 0.2em 0 0.5em 0.5em;
+}
+
+section, article {
+  margin: 0 0 1.618em 0;
+  &:after {
+    font-size: 0pt;
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+}
+header {
+  margin: 0;
+  line-height: 1em;
+  padding: 1.5em $spacing 0;
+  border-bottom: 2px solid $highlight;
+
+  h1 {
+    font-size: 4.1em;
+    line-height: 0.8em;
+    margin: 0px;
+    border: none;
+    a {
+      color: $complement;
+    }
+    @media screen and (max-width: 29.25em) {
+      font-size: 2.55em;
+    }
+    @media screen and (max-width: 19.25em) {
+      font-size: 1.55em;
+    }
+  }
+  h2 {
+    margin: 0 0.06em 0.9em;
+    color: $highlight;
+    border: none;
+    font-size: 1.618em;
+    @media screen and (max-width: 29.25em) {
+      font-size: 1em;
+    }
+    @media screen and (max-width: 19.25em) {
+      font-size: 0.618em;
+    }
+  }
+  nav {
+    position: absolute;
+    right: 1em;
+    top: 6.4em;
+    z-index: 100;
+    @include transition(top 1s);
+    @media screen and (max-width: 29.25em) {
+      top: 4.3em;
+    }
+    @media screen and (max-width: 19.25em) {
+      top: 2.9em;
+    }
+    ul {
+      float: right;
+      background: black;
+      border: 1px solid $highlight;
+      border-radius: 0.5em;
+      margin: 0;
+      padding: 0 0.5em;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      @include transition(all 1s);
+      li {
+        display: inline-block;
+        padding: 0 0.5em;
+        margin: 0;
+        font-size: 0pt;
+        
+        &:hover {
+          background-color: $complement;
+        }
+        &:first-child a {
+          display: none;
+          font-size: 24pt;
+          font-weight: normal;
+          text-align: center;
+          line-height: 1em;
+          float: left;
+          margin: 0 0 0 -1em;
+          padding: 0;
+          width: 1em;
+          position: relative;
+
+          &:hover {
+            background-color: $complement;
+          }
+        }
+        a {
+          font-family: 'Orbitron', sans-serif;
+          font-size: 12pt;
+          text-decoration: none;
+          color: $text-light;
+          font-weight: bold;
+          padding: 0 0.5em;
+          line-height: 2em;
+
+          &:hover {
+            color: $text-dark;
+          }
+        }
+      }
+      @media screen and (max-width: $grid-collapse) {
+        max-width: 2em;
+        max-height: 2em;
+        padding: 0 0 0 2em;
+        
+        li { 
+          display: block;
+          &:first-child a {
+            display: block;
+          }
+        }
+      }
+    }
+    &.hide ul {
+      max-width: 2em;
+      max-height: 2em;
+    }
+    &.show ul {
+      max-width: 100%;
+      max-height: 15em;
+    }
+  }
+}
+footer {
+  border-top: 2px solid $complement;
+  padding: $spacing;
+  margin: $spacing 0;
+  clear: both;
+  &:after {
+    font-size: 0pt;
+    content: ' ';
+    clear: both;
+    display: block;
+  }
+  @media screen and (min-width: $grid-collapse) {
+    .first, .second {
+      float: left;
+      width: 48%;
+    }
+    .first {
+      margin-right: 4%;
+    }
+    .second {
+      text-align: right;
+    }
+  }
+}

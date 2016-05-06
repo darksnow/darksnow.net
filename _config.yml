@@ -1,0 +1,19 @@
+# Site settings
+title: DarkSnow
+email: martin@darksnow.net
+description: > # this means to ignore newlines until "baseurl:"
+  Freelance software developer, based in Fife, Scotland, and specialising in
+  using Free and Open Source technologies to create standards compliant web
+  sites. Passionate about creating websites using the latest technology and
+  the latest standards.
+url: "http://darksnow.net" # the base hostname & protocol for your site
+twitter_username: martindarksnow
+github_username:  DarkSnow
+
+# Build settings
+host: 0.0.0.0
+markdown: kramdown
+permalink: /:categories/:title.html
+keep_files: [downloads, img, js, demo]
+exclude: [config.rb]
+

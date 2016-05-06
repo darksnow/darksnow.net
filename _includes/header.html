@@ -1,0 +1,16 @@
+<header>
+  <h1><a href="/">DarkSnow</a></h1>
+  <h2>Freelance Web Developer</h2>
+  {% assign rel = '/' %}
+  {% if page.path == 'index.html' %}{% assign rel = '#' %}{% endif %}
+  <nav>
+    <ul>
+      <li><a href="/" class="toggle">&equiv;</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="{{ rel }}portfolio">Portfolio</a></li>
+      <li><a href="{{ rel }}code">The Code</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,109 @@
+---
+layout: default
+---
+<main>
+<section id="about">
+  <a name="about"></a>
+  <div class="first">
+    <p>I am a freelance software developer, based in Fife, Scotland, and specialising in using Free and Open Source technologies to create standards compliant web sites.</p>
+    <p>I am passionate about creating websites using the latest technology and the latest standards. Of course, sites have to work on older browsers too.</p>
+  </div>
+  <div class="second">
+    <p>No matter what device or browser is used to access a site, they are using the same internet, the same language, the same protocols, to show the same content.</p>
+    <p>Without standards to define all those parts of a complex interaction, the internet, and the web on top of it, as it is today, would not exist at all.</p>
+  </div>
+</section>
+
+<section id="services">
+  <a name="services"></a>
+  <h1>What I can do for you</h1>
+  <div id="heed">
+    <div>
+      <img id="heedicons" src="/img/heedicons.svg" alt="My Heed" title="My Heed" />
+      <div>
+        <img src="/img/logos/firefox.svg" alt="Firefox" title="Firefox" />
+        <img src="/img/logos/chrome.svg" alt="Chrome" title="Chrome" />
+        <img src="/img/logos/opera-glassy-logo.svg" alt="Opera" title="Opera" />
+        <img src="/img/logos/ie.svg" alt="Internet Explorer" title="Internet Explorer" />
+        <img src="/img/logos/safari.svg" alt="Safari" title="Safari" />
+      </div>
+    </div>
+  </div>
+  <div class="first">
+    <h3>JavaScript with jQuery</h3>
+    <p>Using various frameworks to make the web work for you.</p>
+    <h3>PHP and Symphony</h3>
+    <p>A popular language with a world class framework, making the server work for you.</p>
+    <h3>Drupal and Drupal Commerce</h3>
+    <p>My prefered CMS, capable of almost anything!</p>
+    <h3>MySQL Database</h3>
+    <p>Using SQL to store and retrieve your data in the ways you need it.</p>
+    <h3>Linux and Apache or Nginx</h3>
+    <p>A rock solid server platform to run all this stuff.</p>
+    <h3>Listening to the client</h3>
+    <p>It&#8217;s important to understand what you really want.</p>
+    <h3>A nose for problems</h3>
+    <p>If something&#8217;s going to go wrong I&#8217;ll sniff it out before it&#8217;s a problem.</p>
+  </div>
+  <div class="last">
+    <h3>Standards compliant HTML5</h3>
+    <p>Understanding the current state of the art.</p>
+    <h3>Page Styles with CSS3</h3>
+    <p>Making pages more beautiful and lively.</p>
+    <h3>Page Layout and design</h3>
+    <p>If you can draw it in crayon I can make it into a website.</p>
+    <h3>Responsive page design</h3>
+    <p>Modern web sites should work on any device, no matter the size.</p>
+    <h3>Online mapping</h3>
+    <p>Using Google Maps or OpenLayers to manage and display geographic data.</p>
+    <h3>An eye for detail</h3>
+    <p>It&#8217;s the little things that make a project great.</p>
+    <h3>Talking to the client</h3>
+    <p>Things go smoother when everyone is clear about what&#8217;s been going on.</p>
+  </div>
+</section>
+
+<section id="portfolio">
+  <a name="portfolio"></a>
+  <h1>Examples of my work</h1>
+  {% for post in site.categories['portfolio'] %}
+  {% if post.image %}{% assign post_image = post.image %}{% else %}
+  {% capture post_image %}{{ post.title | slug}}.png{% endcapture %}{% endif %}
+  <article>
+    <h2><a href="{{ post.url | remove: '.html' }}">{{ post.title }}</a></h2>
+    <a href="{{ post.url | remove: '.html' }}"><img src="img/screenshots/small/{{ post_image }}" alt="{{ post.title }}"/></a>
+    {% if post.skills %}
+    <div class="skills">
+    {% for skill in post.skills %}
+      <img src="/img/skills/{{ skill | slug }}.svg" alt="{{ skill }}" title="{{ skill }}">
+    {% endfor %}
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+
+  <p class="suffix"><a href="/portfolio">Have a look at the full portfolio&hellip;</a></p>
+</section>
+
+<section id="code">
+  <a name="code"></a>
+  <h1>Technical Musings</h1>
+  <p>In this blog I try to collect together my thoughts and ideas on the technical subjects I tackle. It&#8217;s usually all about the code, so I called it simply, <b>&ldquo;<a href="/code">The Code</a>&rdquo;</b>.</p>
+{% for post in site.categories['code'] limit:8 %}
+  <article>
+    <time>{{ post.date | date: "%b %-d, %Y" }}</time>
+    <h2>
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl | remove: '.html' }}">{{ post.title }}</a>
+    </h2>
+    {% if post.tags %}
+    <ul class="terms">
+     {% for tag in post.tags %}
+     <li>{{ tag }}</li>
+     {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
+  {% endfor %}
+  <p class="suffix"><a href="/code">Full Blog Post Listing&hellip;</a></p>
+</section>
+</main>

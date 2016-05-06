@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{% if page.image %}{% assign page_image = page.image %}{% else %}
+{% capture page_image %}{{ page.title | slug}}.png{% endcapture %}{% endif %}
+<main id="portfolio-entry">
+  <h1>{{ page.title }}</h1>
+  <time>{{ page.date | date: "%b %Y" }}</time>
+  {% if page.link %}<a href="{{ page.link }}">Visit {{ page.link }}</a>{% endif %}
+
+  <img src="/img/screenshots/{{ page_image }}" alt="{{ page.title }}" title="{{ page.title }}" class="title" />
+  <aside>
+    {% if page.client %}
+    <h2>My Client</h2>
+    {% if page.client_url %}
+    <a href="{{ page.client_url }}">{{ page.client }}</a>
+    {% else %}
+    <p>{{ page.client }}</p>
+    {% endif %}
+    {% endif %}
+
+    {% if page.highlight %}
+    <h2>Highlight</h2>
+    <p>{{page.highlight}}</p>
+    {% endif %}
+
+    {% if page.skills %}
+    <h2>Key skills used</h2>
+    <ul class="skills">
+      {% for skill in page.skills %}
+      <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </aside>
+  <article>
+  {{ content }}
+  </article>
+</main>

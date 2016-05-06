@@ -1,0 +1,142 @@
+
+@import url(http://fonts.googleapis.com/css?family=Varela+Round|Orbitron);
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: url(../img/LogoBG.png) no-repeat fixed -150px -250px black;
+  color: $text-light;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 12pt;
+  font-weight: normal;
+  line-height: 1.618;
+  min-width: 13em;
+  @media screen and (max-width: 36em) {
+    background-image: none;
+  }
+  @media screen and (max-width: 420px) {
+    font-size: 10pt;
+  }
+}
+
+main {
+  padding: $spacing;
+}
+
+a, li {
+  @include transition(all 0.5s);
+}
+ul {
+  list-style: inside disc;
+}
+ol {
+  list-style: inside decimal;
+}
+a {
+  color: $highlight;
+  text-decoration: none;
+  &:hover, &.live {
+    color: $complement;
+  }
+  &[name] {
+    display: block;
+    padding-bottom: 0.1em;
+  }
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+li {
+  padding-bottom: 0.5em;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+blockquote {
+  margin: 0 0 0.5em 0;
+  padding: 0.2em 2em 0.6em;
+  position: relative;
+  border: 1px dashed $highlight;
+  border-radius: 1em;
+  
+  &:before, &:after {
+    position: absolute;
+    font-size: 4em;
+  }
+  &:before {
+    content: '\201C';
+    left: 0;
+    top: 0;
+    line-height: 1em;
+  }
+  &:after {
+    content: '\201D';
+    right: 0;
+    bottom: 0;
+    line-height: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: normal;
+  margin: 1.2em 0 0.2em 0; }
+
+h1 {
+  font-size: 1.618em;
+  border-bottom: 1px solid $complement;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+label, input, textarea {
+  display: block;
+  width: 100%;
+}
+
+input, textarea {
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+}
+
+label.required:after {
+  content: '*';
+  color: #ff8133;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5em;
+  line-height: 0.5em;
+  margin-left: 0.2em;
+  vertical-align: bottom;
+}
+
+input[type="submit"] {
+  width: auto;
+  float: left;
+}
+

@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>World Time Zones :: DarkSnow</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!--link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" /-->
+    <link rel="stylesheet" href="leaflet.css" />
+    <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+      background: #242426;
+      font-size: 18pt;
+      color: #ccc;
+    }
+    path {
+      fill: #00ff00;
+      fill-opacity: 0;
+      stroke-width: 1px;
+      stroke: #ff8133;
+    }
+    path.current {
+      fill: #ff8133;
+      fill-opacity: 0.2;
+
+    }
+    circle {
+      fill: #39f;
+      fill-opacity: 0.25;
+      stroke: #39f;
+      stroke-width: 8;
+    }
+    line {
+      stroke: #39f;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transform-origin: bottom;
+    }
+    .current circle, .current line {
+      fill: #ff8133;
+      stroke: #ff8133;
+    }
+    line.hours {
+      stroke-width: 16;
+    }
+    .header a:first-child {
+      background: url(/img/heed.svg) no-repeat 0 50%;
+      background-size: auto 100%;
+      display: inline-block;
+      width: 1.1em;
+      overflow: hidden;
+      text-indent: 100%;
+    }
+    .clocks {
+      font-size: 1.2em;
+      text-shadow: 0 0 0.15em black;
+    }
+    .leaflet-marker-icon {
+      background: transparent;
+      border: none;
+      font-size: 0.8m;
+      font-weight: bold;
+      margin-left: -1.5em;
+      text-align: center;
+      color: #39f;
+      line-height: 1em;
+      padding-top: 0.2em;
+      width: 3.2em;
+      text-align: center;
+    }
+    .leaflet-marker-icon.current {
+      color: #ff8133;
+    }
+    .leaflet-marker-icon svg {
+      width: 100%;
+      height: auto;
+    }
+    .zoom3 .leaflet-marker-icon { font-size: 0.6em; }
+    .zoom2 .leaflet-marker-icon { font-size: 0.35em; }
+    .zoom1 .leaflet-marker-icon { font-size: 0.15em; }
+
+    .zone-name { white-space: pre-line; }
+    .local-time:after { content: ' here'; }
+    .selected-time { color: #ff8133; }
+    .selected-time:after { content: ' there'; }
+
+
+/**
+ * Geocoder styles from:
+ * https://raw.githubusercontent.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css
+ */
+
+.leaflet-control-geocoder {
+	box-shadow: 0 1px 7px #999;
+	background: #f8f8f9;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+  transition: all 0.5s ease;
+	padding: 0.15em;
+	max-height: 1.6em;
+}
+
+.leaflet-control-geocoder a {
+	width: 1.2em;
+	height: 1.2em;
+	display: inline-block;
+	max-width: 2em;
+  transition: all 0.5s ease;
+}
+
+.leaflet-control-geocoder-form {
+  overflow: hidden;
+  white-space: nowrap;
+	position: relative;
+	line-height: 1em;
+  transition: all 0.5s ease;
+  max-width: 0;
+  display: inline-block;
+}
+.leaflet-control-geocoder-form input {
+  font-size: 0.8em;
+  border-style: solid;
+  border-width: 1px;
+}
+.leaflet-control-geocoder-form input[type=text] {
+  border-width: 1px 0 1px 1px;
+  border-radius: 4px 0 0 4px;
+  width: 10em;
+  border-color: #aaa;
+}
+.leaflet-control-geocoder-form input[type=submit] {
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  background: #39f;
+  border-color: #333;
+  cursor: pointer;
+}
+.leaflet-control-geocoder-expanded .leaflet-control-geocoder-toggle {
+  max-width: 0;
+}
+.leaflet-control-geocoder-expanded form {
+  max-width: 18em;
+}
+    </style>
+  </head>
+  <body class="zoom3">
+    <div id="map"></div>
+    <!--script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script-->
+    <script src="leaflet.js"></script>
+    <script src="leaflet.ajax.min.js"></script>
+    <script src="moment.min.js"></script>
+    <!--script src="moment-timezone-with-data-2010-2020.min.js"></script-->
+    <script src="Control.OSMGeocoder.js"></script>
+    <script>
+
+/**
+ * Build map
+ */
+var map = L.map('map', {
+  center: [40.7127837, 0],
+  zoom: 3,
+  zoomControl: false,
+  minZoom: 1,
+  maxZoom: 5,
+  worldCopyJump: true,
+});
+
+map.addLayer(L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+}));
+
+map.addControl(new L.Control.OSMGeocoder({text: 'Find'}));
+
+map.on('zoomend', function(ev) {
+  document.body.classList.remove('zoom1');
+  document.body.classList.remove('zoom2');
+  document.body.classList.remove('zoom3');
+  var zoom = map.getZoom();
+  if (zoom <= 3) {
+    document.body.classList.add('zoom' + zoom);
+  }
+});
+/**
+ * Create Custom Controls
+ */
+var homeButton = L.Control.extend({
+  options: { position: 'topleft' },
+  onAdd: function(map) {
+    this._div = L.DomUtil.create('div', 'header');
+    this._div.innerHTML = '<a href="/">Home</a>';
+    return this._div;
+  }
+});
+map.addControl(new homeButton());
+
+new L.Control.Zoom({ position: 'topleft' }).addTo(map);
+
+map.times = L.Control.extend({
+  options: { position: 'bottomleft' },
+  onAdd: function(map) {
+    this._div = L.DomUtil.create('div', 'clocks');
+    map.times.localTime = L.DomUtil.create('div', 'local-time', this._div);
+    map.times.localTime._tz = new moment().utcOffset();
+    map.times.selectedTime = L.DomUtil.create('div', 'selected-time', this._div);
+    map.times.selectedTime._tz = map.times.localTime._tz;
+    return this._div;
+  }
+});
+map.times.showTime = function(ctrl, moment) {
+  moment.utcOffset(ctrl._tz);
+  ctrl.innerHTML = moment.format('hh:mm:ss Z');
+};
+map.times.tick = function() {
+  var m = moment();
+  map.times.showTime(map.times.localTime, m);
+  map.times.showTime(map.times.selectedTime, m);
+};
+map.times.select = function(tz) {
+  this.selectedTime._tz = tz;
+  this.showTime(this.selectedTime, new moment());
+};
+map.addControl(new map.times());
+
+/**
+ * Manage movement
+ */
+function getSmallest(x, y) { return x < y ? x : y;};
+function getBiggest (x, y) { return x > y ? x : y;};
+map.labelsToView = function(e) {
+  map.eachLayer(function(layer) {
+    if (layer.timeMarker) {
+      var m = layer.timeMarker;
+      var newLat =
+        getBiggest(
+          getSmallest(
+            map.getBounds().getNorth(),
+            layer.getBounds().getNorth()
+          ),
+          layer.getBounds().getSouth()
+        );
+      m.setLatLng([newLat,m.getLatLng().lng]);
+    }
+  });
+};
+map.on('moveend', map.labelsToView);
+
+// Event Handler for hover states of layers and clocks
+map.highlightZone = function(layer) {
+  var live = document.getElementsByClassName('current');
+  for (var i = live.length - 1; i >= 0; i--) {
+    if (live[i].classList) {
+      live[i].classList.remove('current');
+    } else {
+      live[i].setAttribute('class', null);
+    }
+  }
+  if (layer._path) {
+    if (layer._path.classList) {
+      layer._path.classList.add('current');
+    } else {
+      layer._path.setAttribute('class', 'current');
+    }
+  } else {
+    for (var idx in layer._layers) {
+      if (layer._layers.hasOwnProperty(idx)) {
+        var l = layer._layers[idx];
+        if (l._path.classList) {
+          l._path.classList.add('current');
+        } else {
+          l._path.setAttribute('class', 'current');
+        }
+      }
+    }
+  }
+  if (layer.timeMarker) {
+    var ico = layer.timeMarker.valueOf()._icon;
+    ico.classList.add('current');
+  }
+  map.times.select(layer.feature.properties.utcMinutes);
+};
+
+/**
+ * Load timezone data
+ */
+var zoneLayer = L.geoJson.ajax('timezones.json', {
+  onEachFeature: function(feature, layer) {
+
+    // Add labels
+    var lab = L.divIcon({
+      html: '<div class="zone-name">' + feature.properties.Name + '</div><svg viewBox="0 0 100 100" width="100px" height="100px" preserveAspectRatio="xMinYMin meet"><circle cx="50" cy="50" r="44" /><line class="hours" x1="50" y1="50" x2="50", y2="32"/><line class="minutes" x1="50" y1="50" x2="50", y2="8"/></svg>',
+      iconSize: null,
+      iconAnchor: null,
+    });
+    var bnds = layer.getBounds();
+    var lng = 0;
+    
+    feature.properties.utcMinutes = feature.properties.Offset * 60;
+
+    if (feature.properties.Offset || feature.properties.Offset === 0) {
+      lng = feature.properties.Offset * 15;
+      if (lng > 180) {
+        lng -= 365;
+      }
+    } else {
+      lng = bnds.getCenter().lng;
+    }
+    layer.timeMarker = L.marker([bnds.getNorth(), lng], {icon: lab}).addTo(map);
+    layer.timeMarker.layer = layer; // Association for hover events
+
+    // Event Handling
+    layer.timeMarker.on({
+      mouseover: function(e) { map.highlightZone(this.layer); },
+      click: function(e) { map.highlightZone(this.layer); }
+    })
+    layer.on({
+      mouseover: function(e) { map.highlightZone(e.target); },
+      click: function(e) { map.highlightZone(e.target); }
+    })
+  },
+});
+zoneLayer.on('data:loaded', function(e) {
+  map.labelsToView();
+  map.tickZones();
+});
+zoneLayer.addTo(map);
+
+/**
+ * Start the clocks
+ */
+map.tickZones = function() {
+  var now = moment();
+  map.eachLayer(function(layer) {
+    if (layer.timeMarker) {
+      var mk = layer.timeMarker;
+      var m = mk._icon.getElementsByClassName('minutes')[0];
+      var h = mk._icon.getElementsByClassName('hours')[0];
+      now.utcOffset(mk.layer.feature.properties.utcMinutes);
+//      h.style.msTransform = h.style.transform = 'rotate(' + (30 * now.hours()) + 'deg)';
+//      m.style.msTransform = m.style.transform = 'rotate(' + (6 * now.minute()) + 'deg)';
+      h.setAttribute('transform', 'rotate(' + (30 * now.hours()) + ', 50, 50)');
+      m.setAttribute('transform', 'rotate(' + (6 * now.minute()) + ', 50, 50)');
+    }
+  });
+
+};
+window.setInterval(map.tickZones, 10000);
+window.setInterval(map.times.tick, 1000);
+    </script>
+  </body>
+</html>

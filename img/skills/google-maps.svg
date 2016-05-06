@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="1083.5759"
+   height="1730.462"
+   id="svg2">
+  <title
+     id="title4">google maps pin</title>
+  <metadata
+     id="metadata19">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>google maps pin</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs17" />
+  <path
+     d="M 543.18122,1711.962 C 491.89677,1444.4258 356.99018,1202.8059 205.04105,980.02248 138.31056,871.3386 61.061641,763.9293 30.010426,638.42776 -19.799897,425.64341 87.704571,190.91736 278.98752,86.298022 507.58668,-47.314758 832.83699,22.345675 977.69104,246.90267 c 107.42816,153.48 117.06896,368.85152 21.0073,530.24893 -94.31456,191.78778 -234.88258,356.8594 -325.3595,551.0053 -59.79516,121.566 -104.56516,250.6857 -130.15762,383.8051 z"
+     id="svg_2"
+     style="fill:#ff8133;fill-opacity:1;fill-rule:evenodd;stroke:#3399ff;stroke-width:37;stroke-miterlimit:10;stroke-opacity:1" />
+  <circle
+     cx="734.54602"
+     cy="652.047"
+     r="183.33301"
+     transform="translate(-192.75878,-128.66699)"
+     id="svg_4"
+     style="fill:#ff8133;fill-opacity:1;fill-rule:evenodd" />
+  <circle
+     cx="733.5"
+     cy="637"
+     r="136.20068"
+     transform="translate(-192.75878,-128.66699)"
+     id="svg_5"
+     style="fill:#000000;stroke:#000000;stroke-width:5" />
+</svg>

@@ -1,0 +1,17 @@
+{
+  "name": "DarkSnownet",
+  "config": {
+    "image_source": "_images",
+    "image_dest": "img/styles"
+  },
+  "scripts": {
+    "start": "jekyll serve & compass watch &",
+    "clean": "rm -fr _site $npm_package_config_image_dest",
+
+    "images": "./_scripts/images.sh $npm_package_config_image_source $npm_package_config_image_dest",
+    
+    "optim:jpeg": "find _site -regex \".*.\\(jpeg\\|jpg\\)\" -exec jpegoptim -m 90 {} \\;",
+    "optim:png": "find _site -name *.png -exec pngcrush -rem alla -nofilecheck -reduce -ow -q {} \\;",
+    "optim": "npm run optim:png && npm run optim:jpeg"
+  }
+}

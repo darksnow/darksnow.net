@@ -28,7 +28,10 @@ time {
 }
 .terms {
   margin: 0;
-  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  list-style: none;
+  border-bottom: 1px solid $complement;
+  
   &:after {
     content: ' ';
     display: block;
@@ -38,6 +41,10 @@ time {
     float: left;
     margin-right: $spacing / 2;
     white-space: nowrap;
+    background: $complement;
+    padding: 0 $spacing;
+    color: $text-dark;
+    border-radius: $spacing / 2 $spacing / 2 0 0;
   }
 }
 
@@ -84,7 +91,7 @@ time {
   }
 }
 
-#portfolio {
+section.grid {
   article {
     float: left;
     padding: 1em;
@@ -98,7 +105,7 @@ time {
     @media screen and (min-width: 1600px) { width: 16.66667%; }
     @media screen and (min-width: 1920px) { width: 14.28571%; }
     @media screen and (min-width: 2240px) { width: 12.5%; }
-    .skills {
+    .addendum, time {
       position: absolute;
       bottom: 0;
       left: 1em;
@@ -107,16 +114,19 @@ time {
       background: #000;
       background: rgba(0, 0, 0, 0.8);
     }
-    h2 {
-      margin: 0;
-      position: absolute;
-      top: 0;
-      left: ($spacing / 1.2);
-      right: ($spacing / 1.2);
-      background: #000;
-      background: rgba(0, 0, 0, 0.8);
-    }
   }
+  h2 {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: ($spacing / 1.2);
+    right: ($spacing / 1.2);
+    background: #000;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+#portfolio {
   &:after, > p {
     content: ' ';
     display: block;
@@ -125,7 +135,10 @@ time {
   }
 }
 #code {
-  article, .terms, .terms li, h2 {
+  article {
+    margin-bottom: $spacing;
+  }
+  .terms, .terms li, h2 {
     margin-bottom: 0;
     padding-bottom: 0;
   }
@@ -133,8 +146,20 @@ time {
     margin-top: $spacing * 2;
   }
 }
-#code-list article p {
-  margin-left: 120px;
+#code-list {
+  h1 {
+    border-bottom: none;
+  }
+  article > a img {
+    float: left;
+    margin-right: $spacing;
+  }
+}
+
+#code-post {
+  h1 {
+    margin-bottom: 0;
+  }
 }
 #http404 {
   padding: $spacing * 2;
@@ -177,7 +202,7 @@ time {
   }
 }
 
-.skills {
+.addendum {
   margin-bottom: 0.5em;
   img {
     height: 1em;

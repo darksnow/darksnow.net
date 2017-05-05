@@ -63,7 +63,7 @@ layout: default
   </div>
 </section>
 
-<section id="portfolio">
+<section id="portfolio" class="grid">
   <a name="portfolio"></a>
   <h1>Examples of my work</h1>
   {% for post in site.categories['portfolio'] %}
@@ -71,9 +71,11 @@ layout: default
   {% capture post_image %}{{ post.title | slug}}.png{% endcapture %}{% endif %}
   <article>
     <h2><a href="{{ post.url | remove: '.html' }}">{{ post.title }}</a></h2>
-    <a href="{{ post.url | remove: '.html' }}"><img src="img/screenshots/small/{{ post_image }}" alt="{{ post.title }}"/></a>
+    <a href="{{ post.url | remove: '.html' }}">
+    <img src="img/screenshots/small/{{ post_image }}" alt="{{ post.title }}"/>
+    </a>
     {% if post.skills %}
-    <div class="skills">
+    <div class="addendum">
     {% for skill in post.skills %}
       <img src="/img/skills/{{ skill | slug }}.svg" alt="{{ skill }}" title="{{ skill }}">
     {% endfor %}
@@ -85,23 +87,20 @@ layout: default
   <p class="suffix"><a href="/portfolio">Have a look at the full portfolio&hellip;</a></p>
 </section>
 
-<section id="code">
+<section id="code" class="grid">
   <a name="code"></a>
   <h1>Technical Musings</h1>
   <p>In this blog I try to collect together my thoughts and ideas on the technical subjects I tackle. It&#8217;s usually all about the code, so I called it simply, <b>&ldquo;<a href="/code">The Code</a>&rdquo;</b>.</p>
 {% for post in site.categories['code'] limit:8 %}
+{% capture url %} href="{{ post.url | prepend: site.baseurl | remove: '.html' }}"{% endcapture %}
   <article>
-    <time>{{ post.date | date: "%b %-d, %Y" }}</time>
     <h2>
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl | remove: '.html' }}">{{ post.title }}</a>
+      <a class="post-link" {{ url }}">{{ post.title }}</a>
     </h2>
-    {% if post.tags %}
-    <ul class="terms">
-     {% for tag in post.tags %}
-     <li>{{ tag }}</li>
-     {% endfor %}
-    </ul>
+    {% if post.image %}
+    <a {{ url }}><img src="/img/styles/thumb/code/{{ post.image }}" alt="{{ post.title }}" /></a>
     {% endif %}
+    <time>{{ post.date | date: "%b %-d, %Y" }}</time>
   </article>
   {% endfor %}
   <p class="suffix"><a href="/code">Full Blog Post Listing&hellip;</a></p>

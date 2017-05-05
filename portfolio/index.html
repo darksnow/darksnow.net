@@ -5,7 +5,7 @@ layout: default
   <h1>My Portfolio</h1>
   <p>Below are some examples of my work along with the key elements that I brought to the project.</p>
 </main>
-<section id="portfolio">
+<section id="portfolio" class="grid">
   {% for post in site.categories['portfolio'] %}
   {% if post.image %}{% assign post_image = post.image %}{% else %}
   {% capture post_image %}{{ post.title | slug }}.png{% endcapture %}{% endif %}
@@ -13,7 +13,7 @@ layout: default
     <h2><a href="{{ post.url | remove: '.html' }}">{{ post.title }}</a></h2>
     <a href="{{ post.url | remove: '.html' }}"><img src="/img/screenshots/small/{{ post_image }}" alt="{{ post.title }}"/></a>
     {% if post.skills %}
-    <div class="skills">
+    <div class="addendum">
       {% for skill in post.skills %}
       <img src="/img/skills/{{ skill | slug }}.svg" alt="{{ skill }}" title="{{ skill }}">
       {% endfor %}

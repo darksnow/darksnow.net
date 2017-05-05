@@ -32,10 +32,24 @@ section, article {
     display: block;
   }
 }
+#maheed {
+  float: left;
+  height: 4em;
+  margin-left: $spacing;
+  @media screen and (max-width: 29.25em) {
+    height: 2.55em;
+  }
+  @media screen and (max-width: 19.25em) {
+    height: 1.55em;
+  }
+}
 header {
   margin: 0;
   line-height: 1em;
-  padding: 1.5em $spacing 0;
+  background: #000;
+  z-index: 2;
+  position: relative;
+  padding-top: $spacing;
   border-bottom: 2px solid $highlight;
 
   h1 {
@@ -43,7 +57,7 @@ header {
     line-height: 0.8em;
     margin: 0px;
     border: none;
-    a {
+    &, a {
       color: $complement;
     }
     @media screen and (max-width: 29.25em) {
@@ -66,27 +80,8 @@ header {
     }
   }
   nav {
-    position: absolute;
-    right: 1em;
-    top: 6.4em;
-    z-index: 100;
-    @include transition(top 1s);
-    @media screen and (max-width: 29.25em) {
-      top: 4.3em;
-    }
-    @media screen and (max-width: 19.25em) {
-      top: 2.9em;
-    }
+    padding: 0 $spacing/2;
     ul {
-      float: right;
-      background: black;
-      border: 1px solid $highlight;
-      border-radius: 0.5em;
-      margin: 0;
-      padding: 0 0.5em;
-      max-width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
       @include transition(all 1s);
       li {
         display: inline-block;
@@ -94,59 +89,60 @@ header {
         margin: 0;
         font-size: 0pt;
         
-        &:hover {
-          background-color: $complement;
-        }
-        &:first-child a {
-          display: none;
-          font-size: 24pt;
-          font-weight: normal;
-          text-align: center;
-          line-height: 1em;
-          float: left;
-          margin: 0 0 0 -1em;
-          padding: 0;
-          width: 1em;
-          position: relative;
-
-          &:hover {
-            background-color: $complement;
-          }
-        }
         a {
+          display: block;
+          white-space: nowrap;
           font-family: 'Orbitron', sans-serif;
           font-size: 12pt;
           text-decoration: none;
           color: $text-light;
           font-weight: bold;
-          padding: 0 0.5em;
+          padding: 0 $spacing/2;
           line-height: 2em;
+          color: $complement;
 
           &:hover {
             color: $text-dark;
-          }
-        }
-      }
-      @media screen and (max-width: $grid-collapse) {
-        max-width: 2em;
-        max-height: 2em;
-        padding: 0 0 0 2em;
-        
-        li { 
-          display: block;
-          &:first-child a {
-            display: block;
+            background-color: $highlight;
           }
         }
       }
     }
-    &.hide ul {
-      max-width: 2em;
-      max-height: 2em;
-    }
-    &.show ul {
-      max-width: 100%;
-      max-height: 15em;
+  }
+}
+
+#fixed-header {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid $highlight;
+
+  top: 0;
+  width: 100%;
+  padding: 0 0 0 $spacing;
+  
+  svg {
+    height: 1em;
+  }
+  & > svg {
+    height: 2em;
+  }
+  h1 {
+    flex-grow: 1;
+    font-size: 1em;
+  }
+  line {
+    stroke: $complement;
+    @include transition(stroke 1s);
+  }
+  a {
+    padding: $spacing/2 $spacing;
+    &:hover {
+      background-color: $complement;
+      line {
+        stroke: $text-dark;
+      }
     }
   }
 }
@@ -160,6 +156,16 @@ footer {
     content: ' ';
     clear: both;
     display: block;
+  }
+  svg {
+    height: 3em;
+    width: 3em;
+    vertical-align: bottom;
+  }
+  .mail-ico {
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1em;
   }
   @media screen and (min-width: $grid-collapse) {
     .first, .second {

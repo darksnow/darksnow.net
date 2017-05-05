@@ -35,7 +35,7 @@ main {
 }
 
 a, li {
-  @include transition(all 0.5s);
+  @include transition(color 0.5s, background-color 0.5s);
 }
 ul {
   list-style: inside disc;

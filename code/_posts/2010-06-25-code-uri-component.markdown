@@ -3,7 +3,7 @@ layout: post
 title:  Code URI Component
 date:   2010-06-25 11:10
 tags: Java JavaScript
-image:  dukewithhelmet.png
+image:  code.png
 attachments: javascriptutils.java
 ---
 JavaScript has a handy function built in called `encodeURIComponent()`, and the corresponding function `decodeURIComponent()`.

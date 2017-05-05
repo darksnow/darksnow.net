@@ -3,7 +3,7 @@ layout: post
 title:  Canvas Logo Generator
 date:   2010-02-12 11:54
 tags: Canvas JavaScript
-image:  logo.png
+image:  code.png
 ---
 A while ago I discovered the canvas tag and thought I would have a play around with it. This page is the first result of that exploration and has been used to quickly create bitmaps of the site logo.
 

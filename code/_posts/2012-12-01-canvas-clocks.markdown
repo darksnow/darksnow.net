@@ -3,7 +3,7 @@ layout: post
 title:  Canvas Clocks
 date:   2010-02-12 12:04
 tags: Canvas JavaScript
-image:  clock.png
+image:  clock.jpg
 ---
 Following on from my initial work with the canvas tag to create the [canvas site logo generator](canvas-logo-generator), I worked on the dynamic aspects of the canvas tag, to prove to myself it could be used to create the sort of animations Flash and Silverlight are designed for.
 

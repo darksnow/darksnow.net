@@ -3,7 +3,7 @@ layout: post
 title:  "Leaving the world of work"
 date:   2010-12-13 22:57
 tags: Commentary Freelancing
-image:  loads-money.jpg
+image:  cash.jpg
 ---
 It's been a while since I've written anything on here, and I have a fair bit to write about now.
 

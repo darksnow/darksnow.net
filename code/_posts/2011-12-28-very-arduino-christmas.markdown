@@ -3,7 +3,7 @@ layout: post
 title:  "A very Arduino Christmas"
 date:   2011-12-28 17:02
 tags: arduino electronics embedded
-image:  logo_1.png
+image:  arduino.jpg
 ---
 This Christmas I thought it was finally time to start on a hardware project that I've been thinking about for a long time.
 

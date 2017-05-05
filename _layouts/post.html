@@ -3,6 +3,9 @@ layout: default
 ---
 <main id="code-post">
 <h1>{{ page.title }}</h1>
+
+{% capture img_path %}code/{{ page.image }}{% endcapture %}
+{% include pic.html pic=img_path title=page.title %}
   
 <time>{{ page.date | date: "%b %-d %Y" }}</time>
 {% if page.tags %}
@@ -12,7 +15,7 @@ layout: default
  {% endfor %}
 </ul>
 {% endif %}
-<img src="/img/code/{{ page.image }}" alt="{{ page.title }}" title="{{ page.title }}" class="thumbnail" />
+
 {{ content }}
 
 {% if page.attachments %}

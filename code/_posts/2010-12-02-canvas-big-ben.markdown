@@ -3,7 +3,7 @@ layout: post
 title:  "Canvas Big Ben"
 date:   2010-02-12 12:09
 tags: Canvas JavaScript
-image:  ben.png
+image:  big-ben.jpg
 ---
 My latest exploration of the canvas tag was a sort of extension of the [canvas clocks](/code/canvas-clocks) I already made but the scope was far greater.
 

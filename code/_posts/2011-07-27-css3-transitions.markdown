@@ -3,7 +3,7 @@ layout: post
 title:  "CSS3 Transitions"
 date:   2011-07-27 20:55
 tags: CSS CSS3 Animation JavaScript
-image:  css3.svg
+image:  code.png
 ---
 Recently I've been messing with the cool new features of CSS3 for a client project and I was inspired to see what sort of interface features could be done with it.
 

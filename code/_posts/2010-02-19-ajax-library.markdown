@@ -3,7 +3,7 @@ layout: post
 title:  Ajax Library
 date:   2010-02-19 11:54:17
 tags: Ajax JavaScript Library Web
-image:  deathofajax.jpg
+image:  code.png
 attachments: dsajax.js
 ---
 Like everyone else, when I started dabbling in AJAX code I found myself repeatedly creating the same code to do the same things. There was always code to make sure I could create the XMLHttpRequest if it was there, or the Microsoft equivalent for the awkward browser. There was always event code to process, sometimes repeatedly, the response codes until I got a 4. There was usually code to present some visual indication to the user that there was a call in progress.

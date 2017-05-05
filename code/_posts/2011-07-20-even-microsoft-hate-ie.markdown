@@ -3,7 +3,7 @@ layout: post
 title:  "Even Microsoft Hate IE"
 date:   2011-07-20 21:17
 tags: Browsers IE Web
-image:  ie.svg
+image:  internet-explorer.jpg
 ---
 While wandering the web looking for a work around to a bug in IE (versions 7 upwards) I came across a very interesting little website run by Microsoft.
 

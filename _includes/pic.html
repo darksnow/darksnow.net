@@ -1,0 +1,6 @@
+<picture>
+  <source media="(min-width: 1440px)" srcset="/img/styles/{{ include.pic }}">
+  <source media="(min-width: 1024px)" srcset="/img/styles/large/{{ include.pic }}">
+  <source media="(min-width: 960px)" srcset="/img/styles/medium/{{ include.pic }}">
+  <img src="/img/styles/small/{{ include.pic }}" alt="{{ include.title }}">
+</picture>

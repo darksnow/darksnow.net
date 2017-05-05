@@ -3,7 +3,7 @@ layout: post
 title:  Nifty Glass
 date:   2010-07-15 11:34
 tags: CSS Design
-image:  nifty.png
+image:  code.png
 ---
 I had decided to create the "glass" effect popularised by OSX and Vista and while following various guides and creating some graphics in the [GNU Image Manipulation Package](http://www.gimp.org) I spotted a pattern and decided to come up with a way to create the now popular glass effect in CSS, without using any graphics at all.
 

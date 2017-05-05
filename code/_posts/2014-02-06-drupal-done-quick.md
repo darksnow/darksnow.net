@@ -5,7 +5,7 @@ tags:
  - Drupal
  - command line
  - drush
-image:  drupal.svg
+image:  droplet.jpg
 
 published: true
 ---

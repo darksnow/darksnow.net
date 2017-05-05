@@ -15,7 +15,7 @@ layout: default
     </ul>
     {% endif %}
     {% if post.image %}
-    <a {{ url }}><img class="thumbnail" src="/img/code/{{ post.image }}" alt="{{ post.title }}" /></a>
+    <a {{ url }}><img src="/img/styles/thumb/code/{{ post.image }}" alt="{{ post.title }}" /></a>
     {% endif %}
     <p>{{ post.content | truncatewords:50 | strip_html }}</p>
     <div class="suffix">

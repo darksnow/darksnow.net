@@ -39,6 +39,7 @@ a, li {
 }
 ul {
   list-style: inside disc;
+  margin-bottom: $spacing;
 }
 ol {
   list-style: inside decimal;
@@ -59,8 +60,8 @@ strong, b {
   font-weight: bold;
 }
 
-li {
-  padding-bottom: 0.5em;
+em, i {
+  font-style: italic;
 }
 
 p {

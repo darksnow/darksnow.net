@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My Lego phone holder
+title: Lego phone holder
 tags:
  - Lego
 image: lego.jpg

@@ -13,11 +13,11 @@ I am now the proud owner of an Arduino Uno, a USB Host Shield for it and an asso
 
 I, of course, started with the excellent little sample programs and quickly had an LED blinking on the board, then off the board. I then made the buzzer play a tune and had serial coms (or TTY ;)) working to the host computer. All very handy, but I'm not learning by copying sample code, so it was time to start adapting stuff to make my own project.
 
-![Breadboard](/img/code/running5_bb.preview.png){:.r}Initially I thought I'd create a set of five running lights, so I checked the various example programs and circuit diagrams. I found I needed a resistor on each of the LEDs, but they could all be connected to a common ground.
+![Breadboard](/img/code/running5_bb.png){:.r}Initially I thought I'd create a set of five running lights, so I checked the various example programs and circuit diagrams. I found I needed a resistor on each of the LEDs, but they could all be connected to a common ground.
 
 You should be able to see the idea from the circuit diagram attached.
 
-![Running Lights](/img/code/running5.preview.jpg){:.l}Now, on my mini breadboard I don't have a ground rail, so I snipped a length of wire into small jumpers to link a few rows together. I then added a jumper wire from one of those linked rows to ground on the controller.
+![Running Lights](/img/code/running5.jpg){:.l}Now, on my mini breadboard I don't have a ground rail, so I snipped a length of wire into small jumpers to link a few rows together. I then added a jumper wire from one of those linked rows to ground on the controller.
 
 I've included a picture of how it actually looked at the end of the build. The tiny home made jumpers are hidden behind the single ground cable in this picture, but they are there, and that's why the circuit works at all.
 

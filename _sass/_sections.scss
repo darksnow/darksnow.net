@@ -50,18 +50,6 @@ time {
 
 #about {
   padding-top: $spacing;
-  @media screen and (min-width: $grid-collapse) {
-    div {
-      float: left;
-      width: 50%;
-    }
-    .first {
-      padding-right: $spacing / 2;
-    }
-    .second {
-      padding-left: $spacing / 2;
-    }
-  }
 }
 
 #heed {
@@ -91,38 +79,14 @@ time {
   }
 }
 
-section.grid {
-  article {
+article > p > img, #code-post > p > img {
+  &.l {
     float: left;
-    padding: 1em;
-    margin: 0;
-    width: 100%;
-    position: relative;
-    @media screen and (min-width: 320px ) { width: 50%; }
-    @media screen and (min-width: 640px ) { width: 33.33333%; }
-    @media screen and (min-width: 960px ) { width: 25%; }
-    @media screen and (min-width: 1280px) { width: 20%; }
-    @media screen and (min-width: 1600px) { width: 16.66667%; }
-    @media screen and (min-width: 1920px) { width: 14.28571%; }
-    @media screen and (min-width: 2240px) { width: 12.5%; }
-    .addendum, time {
-      position: absolute;
-      bottom: 0;
-      left: 1em;
-      right: 1em;
-      padding: 0.2em;
-      background: #000;
-      background: rgba(0, 0, 0, 0.8);
-    }
+    margin: $spacing/2 $spacing/2 $spacing/2 0;
   }
-  h2 {
-    margin: 0;
-    position: absolute;
-    top: 0;
-    left: ($spacing / 1.2);
-    right: ($spacing / 1.2);
-    background: #000;
-    background: rgba(0, 0, 0, 0.8);
+  &.r {
+    float: right;
+    margin: $spacing/2 0 $spacing/2 $spacing/2;
   }
 }
 
@@ -217,8 +181,35 @@ section.grid {
     clear: both;
   }
 }
+#pillars {
+  article {
+    h2 {
+      border-bottom: 1px solid $complement;
+    }
+    svg {
+      max-height: 80vw;
+    }
+  }
+}
 
+
+@media screen and (min-width: $grid-collapse / 2) {
+  #pillars {
+    article {
+      svg {
+        max-height: 38vw;
+      }
+    }
+  }
+}
 @media screen and (min-width: $grid-collapse) {
+  #pillars {
+    article {
+      svg {
+        max-height: 22vw;
+      }
+    }
+  }
   #services {
     .first, .last {
       float: left;

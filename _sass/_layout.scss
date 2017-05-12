@@ -83,6 +83,8 @@ header {
     padding: 0 $spacing/2;
     ul {
       @include transition(all 1s);
+      margin-bottom: 0;
+
       li {
         display: inline-block;
         padding: 0 0.5em;
@@ -180,3 +182,64 @@ footer {
     }
   }
 }
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  article {
+    position: relative;
+    flex: 0 1 100%;
+    
+    @media screen and (min-width: 320px ) { flex-basis: 49%; }
+    @media screen and (min-width: 640px ) { flex-basis: 32%; }
+    @media screen and (min-width: 960px ) { flex-basis: 24%; }
+    @media screen and (min-width: 1280px) { flex-basis: 19%; }
+    @media screen and (min-width: 1600px) { flex-basis: 16%; }
+    @media screen and (min-width: 1920px) { flex-basis: 13%; }
+    @media screen and (min-width: 2240px) { flex-basis: 11%; }
+    h2, .addendum, time {
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: 0.2em;
+      margin: 0;
+      background: #000;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .addendum, time {
+      bottom: 0;
+    }
+    h2 {
+      top: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $grid-collapse) {
+  .halves, .quarters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .halves {
+    & > * {
+      flex: 0 0 49%;
+    }
+  }
+  .quarters {
+    article {
+      flex: 0 0 49%;
+    }
+  }
+}
+
+@media screen and (min-width: $grid-collapse * 1.5) {
+  .quarters {
+    article {
+      flex: 0 0 24%;
+    }
+  }
+}
+

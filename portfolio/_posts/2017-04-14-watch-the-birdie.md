@@ -8,7 +8,7 @@ skills:
  - HTML5
  - CSS3
  - SVG
-published: no
+published: yes
 ---
 While working closely with Geoff Baxter, the owner of [Watch the Birdie](http://www.watchthebirdie.co.uk), during the [MV Festival]({% post_url portfolio/2011-11-11-mv-festival %}) we got chatting and eventually the conversation turned to his website. At the time the existing site was getting old and in a creative industry such as wedding videography Geoff felt that the impression it gave was losing him business. All he really wanted was the same information but with a fresh approach, so he gave me free reign to recreate his site from scratch.
 
@@ -31,9 +31,9 @@ On top of this, I broke up the pricing structure to show the core pricing and ad
 
 ## Design
 
-I'm a developer but over the years I've been learning a lot about design so it's fun to play around, especially when a paying client gives me a free hand. ![Watch the Birdie bird](/img/code/birdie-logo.jpg)Geoff and I initially looked at a bird logo from which I created a SVG for use in the middle of the header. I decided to have this logo overlap the first section of the site so it added interest and looked prominant without expanding the overall header too much. This was fitted around the company name in a suitably flowing cursive font. The six sections of the main menu were them placed around it, three on each site for balance. Since social media engagement is important here, Facebook and Vimeo showcase links are prominiant at the top of the screen.
+I'm a developer but over the years I've been learning a lot about design so it's fun to play around, especially when a paying client gives me a free hand. ![Watch the Birdie bird](/img/code/birdie-logo.jpg){:.r}Geoff and I initially looked at a bird logo from which I created a SVG for use in the middle of the header. I decided to have this logo overlap the first section of the site so it added interest and looked prominant without expanding the overall header too much. This was fitted around the company name in a suitably flowing cursive font. The six sections of the main menu were them placed around it, three on each site for balance. Since social media engagement is important here, Facebook and Vimeo showcase links are prominiant at the top of the screen.
 
-After the initial work was done to get the header to scale properly Geoff found a more suitable font so I changed over to the *"Love and Passion"* typeface. This required some alterations to the balance of the header but didn't cause too much trouble for me. ![Watch the Birdie Lettermark](/img/code/birdie.svg) In fact we both liked this font so much that the bird was dropped as a logo to be replaced by a simpler letter mark. This simplified header allows the users attention to be drawn to the highlights video instead of the bright bird logo. Much cleaner.
+After the initial work was done to get the header to scale properly Geoff found a more suitable font so I changed over to the *"Love and Passion"* typeface. This required some alterations to the balance of the header but didn't cause too much trouble for me. ![Watch the Birdie Lettermark](/img/code/birdie.svg){:.l} In fact we both liked this font so much that the bird was dropped as a logo to be replaced by a simpler letter mark. This simplified header allows the users attention to be drawn to the highlights video instead of the bright bird logo. Much cleaner.
 
 With all that in place I looked at the size of the logo at various sizes and using the content as a guide started putting breakpoints in and making changes to the header as the content ran out of breathing room. Given the limited number of menu items I opted not to use a hamburger menu here. Instead I grouped the menu items and allowed them to stack neatly as space allowed. In the same vein of simplicity I also added a fixed button at the bottom right of the page which links back to the header menu. While this button is a large touch target I felt it was less intrusive than a more typical fixed header.
 

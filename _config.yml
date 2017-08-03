@@ -12,8 +12,9 @@ github_username:  DarkSnow
 
 # Build settings
 host: 0.0.0.0
+future: true
 markdown: kramdown
 permalink: /:categories/:title.html
 keep_files: [downloads, img, js, demo]
-exclude: [config.rb, README.md]
+exclude: [config.rb, README.md, package.json]
 

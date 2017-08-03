@@ -4,9 +4,10 @@
 code {
   font-size: 0.8em;
   color: $complement;
+  font-family: 'Courier New', monospace;
 }
 pre code {
-  &[class] {
+  &[class^="language"] {
     border: 1px dashed #3399ff;
     border-radius: 1em;
     display: block;
@@ -14,7 +15,7 @@ pre code {
     color: $text-light;
     margin: 1em 0;
     padding: 0.2em 0.5em;
-    white-space: pre-line;
+    white-space: pre-wrap;
     line-height: 1em;
     &:before {
       content: '001011';
@@ -46,7 +47,6 @@ pre code {
 }
 
 .highlight {
-    font-family: 'Courier New', monospace;
     span   { line-height: 1.68em; }
     .c     { color: #998; font-style: italic } // Comment
     .err   { color: #a61717; background-color: #e3d2d2 } // Error

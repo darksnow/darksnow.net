@@ -1,0 +1,283 @@
+---
+layout: post
+title: Fixed Table Headers
+tags:
+ - Layout
+ - CSS
+ - UI
+image: geometry.jpg
+
+---
+<p>I’ve been working on a calendar app in Angular and decided that I needed a table which scrolls both horizontally and vertically at the same time.</p>
+
+<p>Now, this in itself is easy enough to achieve. Just restrict the size of the <code>&lt;table&gt;</code> element and set scroll bars on it. Job done. My issue is that I also need a fixed header and a fixed first column. Being a fan of using CSS over JavaScript as much as possible I set about seeing if there was a way to make this work without JavaScript at all.</p>
+
+<p>Being good programmers, let’s break this problem down into smaller chunks and see if we can solve them all. What do we actually need to do here?</p>
+<ul>
+<li>Have a table larger than it’s container and allow it to scroll</li>
+<li>Have a fixed header</li>
+<li>Have a fixed first column</li>
+<li>Make sure all the table elements line up</li>
+</ul>
+<h2>Scrolly Table</h2>
+<p>The first item on this list is easy enough, just fix the size of the table element itself and make sure the contents are too big to fit. Setting <code>overflow: auto;</code> in CSS will then add scroll bars for us.</p>
+
+<table id="fixed-just-scroll">
+{% include code/fixed-table.html %}
+</table>
+
+<p>This is a contrived example, clearly, but it does set the base sizing and styles for the rest of the examples. Here the entire table with all it’s headers and the first column are one big block, set inside the table, which has had <code>display: block;</code> set. Since that table is smaller than the content, by fixing the sizing, scroll bars appear. Simple but since our target is to keep the headers of both axis in view, not that useful.</p>
+
+<h2>Fixed header</h2>
+<p>Now, to add a fixed header to the table we make sure that the markup is correct and use a set of  <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code> tags to separate the header from the table contents. This way we can scroll the body independently of the header, leaving it in place.</p>
+
+<table id="fixed-table-header">
+{% include code/fixed-table.html %}
+</table>
+
+<p>Here we fix the height of the <code>&lt;tbody&gt;</code> instead of the <code>&lt;table&gt;</code> and in doing so we get the scroll bars we want by making sure the content is bigger than the containing <code>&lt;tbody&gt;</code>. Unfortunately, in order to make this work we need to set the <code>&lt;tbody&gt;</code> to <code>&lt;display: block&gt;</code> or similar and in doing so, we lose the automatic sizing of the table cells so the headers and data no longer line up. This can be fixed by explicitly setting the width of both <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> to exactly the same. A problem when sizing by ems and taking borders and spacing into account, not not insurmountable.</p>
+
+<p>The bigger issue here is when there isn’t enough space for the table to sit in the browser window. As I’ve set the table to <code>max-width: 100%;</code> so it doesn’t push the entire page too wide in smaller windows, the scroll bars that appear completely knock the layout. Table cells scale with their content and everything ends up out of alignment.</p>
+
+<p>In short, if you have a narrow table which will never go over the page width at any browser size, then this is a quick and easy solution, with the caveat of fixed width cells. For most cases though, I’d say this is completely broken.</p>
+
+<h2>Fixed first column</h2>
+
+<p>The first column is inside the <code>&lt;tbody&gt;</code> so the approach above can’t work. Perhaps that’s just as well given the other caveats that completely break that approach. Time to come up with something else for horizontally scrolling tables.</p>
+
+<div id="fixed-table-column">
+  <table class="fixed-table-header">
+    <thead><tr><th>&nbsp;</th></tr></thead>
+    <tbody>
+      <tr><th>Jan</th></tr>
+      <tr><th>Feb</th></tr>
+      <tr><th>Mar</th></tr>
+      <tr><th>Apr</th></tr>
+      <tr><th>May</th></tr>
+      <tr><th>Jun</th></tr>
+      <tr><th>Jul</th></tr>
+      <tr><th>Aug</th></tr>
+      <tr><th>Sep</th></tr>
+      <tr><th>Oct</th></tr>
+      <tr><th>Nov</th></tr>
+      <tr><th>Dec</th></tr>
+    </body>
+  </table>
+  <table class="fixed-table-body">
+    <thead><tr>
+      <th>1st</th><th>2nd</th><th>3rd</th><th>4th</th><th>5th</th>
+      <th>6th</th><th>7th</th><th>8th</th><th>9th</th><th>10th</th>
+      <th>11th</th><th>12th</th><th>13th</th><th>14th</th><th>15th</th>
+      <th>16th</th><th>17th</th><th>18th</th><th>19th</th><th>20th</th>
+      <th>21st</th><th>22nd</th><th>23rd</th><th>24th</th><th>25th</th>
+      <th>26th</th><th>27th</th><th>28th</th><th>29th</th><th>30th</th>
+      <th>31st</th>
+    </tr></head>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>Since the approach above only really works because the head and body are separate elements, it makes sense to apply the same here and restructure the table. By splitting out the column you want to fix you end up with two elements and can make the main content of the table scroll horizontally. This introduces the same issue as the fixed header, namely keeping the sizing consistent.</p>
+
+<p>I’ve lined these up neatly using flexbox rather than any float options. Flexbox allows things to scale as required without any sort of hack and is just much easier for this sort of thing. The approach here allows the column widths to scale to their content, as tables do, just leaving the need to scale the height of rows, which I feel is an easier problem in most cases.</p>
+
+<p>This approach is also seriously flawed though. It requires two separate tables so is not just a CSS layout solution. This breaking up of the table is not exactly semantic and therefore doesn’t sit well with me in principle. While the sizing issues are mitigated as mentioned above, they are still there so this is also not a great solution, but this does allow the first column to stay visible when the contents of the table are scrolled horizontally, so it does work.</p>
+
+<h2>Both axis, in principle</h2>
+
+<p>Now we’ve seen the individual parts of the problem. I’ve made a table scroll in both directions without fixed headers and by splitting parts of the table out I’ve made two tables with fixed axis, one scrolling horizontal and one scrolling vertically. While all this is in CSS there are some serious flaws with these approaches. The question is, how can we put them together.</p>
+
+<p>It seems that what we need is to allow a section of the table to scroll in one direction and then have another container scroll in the other direction. That way can combine the two approaches, split the table up into parts and have them scroll independently while leaving their respective headers behind. This approach can never work though.</p>
+
+<p>If I create a vertical scrolling section with a fixed header, the scroll bar appears to the far right as it is supposed to, as seen above. If I then create a second table for the vertical axis and have a container which scrolls horizontally around the table with the vertical scroll bar, what happens? Well, the vertical scroll bar will remain at the right of it’s container, where it should be. This means we’d have to scroll to the far right on the horizontal scroll bar before we even get to see the vertical scroll bar.</p>
+
+<p>Having explored this I don’t think there is a CSS solution to this problem. But maybe that’s not a bad thing. I’m a big fan of limiting my use of JS as much as possible, preferring a CSS solution but in this case the CSS solutions I’ve come up with have flaws. They remove the innate ability of a table to adapt the cell size to it’s content and they require breaking up the table and distorting or obscuring it’s semantic meaning. If a little JS can handle the fixed headers and allow us to keep the inherent properties of an HTML table, then that’s a win.</p>
+
+<p>With all that in mind, perhaps the first example is the right approach after all.</p>
+
+<h2>Putting it all together</h2>
+
+<p>Now that we’ve established that there is no pure CSS solution to this problem, here is what I came up with.</p>
+
+<p data-height="300" data-theme-id="0" data-slug-hash="dRyaOo" data-default-tab="result" data-user="darksnow" data-embed-version="2" data-pen-title="Fixed Axis Table" class="codepen">See the Pen <a href="https://codepen.io/darksnow/pen/dRyaOo/">Fixed Axis Table</a> by Martin Fraser (<a href="https://codepen.io/darksnow">@darksnow</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>Here we get the best bits of using a table. As in the first example we just set the table element itself to scroll. That way the cells can scale to the content as needed, the table is just a semantic table with no extra markup and the container, with it’s scroll bars, will size to the view port, all responsive. This is the way I prefer to use HTML, nice a clean.</p>
+
+<p>All that’s been added is a tiny bit of jQuery code in a scroll event handler. Since we want our axis labels to stick to the top and left side of the scrolling area, we just need to offset them by the amount the container has scrolled, in pixels. Since this is exactly what we get from <code>scrollTop</code> and <code>scrollLeft</code> properties of the element with the scroll bars, we don’t even need to calculate anything. We just set the offset in CSS and we’re done.</p>
+
+{% highlight javascript %}
+$(function() {
+  $('#fixed-headers').scroll(function(ev) {
+    $('thead').css('transform', 'translateY(' + this.scrollTop + 'px)');
+    $('tbody th').css('transform', 'translateX(' + this.scrollLeft + 'px)');
+  });
+});
+{% endhighlight %}
+
+<p>I’ve used a CSS3 transform here for two reasons. Firstly, if you want to use left and right to position the elements you need to set <code>position: absolute;</code> which removes the element from the document flow. Doing this means the table header is no longer part of the table and you lose the scaling. The other reason is performance. By using CSS3 transforms the browser can elect to use hardware acceleration to make the change. I won’t go into the full details here but essentially these capabilities are used for 3D transforms but by adding <code>transform: translateZ(0)</code> to the elements you will later target, the browser uses the available hardware acceleration.</p>
+
+<h2>In Conclusion [tl;dr]</h2>
+
+<p>While it is possible to cobble together various approaches to fix the first column, or the table header, even both at the same time, using pure CSS I think the compromises are too far. By keeping the HTML clean we can get the benefits of using the inherent capabilities of an HTML table and with a tiny bit of JavaScript we can still fix the headers inside a scrolling container.</p>
+
+<p>I’ve implemented it here in jQuery to deal with cross browser issues and for clarity. In the real project I’m working on I’ve done the same thing using Angular. The JS you use doesn’t matter nearly as much as the markup and the approach. I do like using just CSS as much as I can but we need to be pragmatic on real projects so this small compromise is, I feel, the best approach.</p>
+
+<style>
+table {
+  display: block;
+  width: 50em;
+  max-width: 100%;
+  position: relative;
+  overflow-x: auto;
+}
+th {
+  font-weight: bold;
+  background: #999;
+  color: #000;
+  padding: 0 0.5em;
+}
+td {
+  width: 20px;
+}
+tr:nth-child(2n) td:nth-child(2n),
+tr:nth-child(2n-1) td:nth-child(2n-1) {
+  background: #333;
+}
+#fixed-just-scroll {
+  height: 200px;
+  overflow: auto;
+}
+#fixed-just-scroll td {
+  padding: 1em 2em 0;
+}
+
+#fixed-table-header tbody {
+  height: 200px;
+  overflow: auto;
+  display: block;
+}
+#fixed-table-header th, #fixed-table-header td {
+  width: 3.5em;
+}
+
+#fixed-table-column {
+  display: flex;
+}
+#fixed-table-column .fixed-table-header {
+  display: initial;
+  width: auto;
+  overflow-x: hidden;
+}
+
+</style>
+

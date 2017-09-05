@@ -19,13 +19,13 @@ I had applied for the junior role due to a lack of real world experience. I felt
 
 The contract started with me meeting the team and working with the other front end dev to go over the mock ups. We printed off every page of the design and put them all up on *the big wall* so we could see the site as a whole. This gave us an idea of the consistencies and inconsistencies in the design and showed at a glance where we could abstract HTML templates. *The big wall* remained up for the entire project and proved a valuable resource for the designers and developers alike. The conference room where we set up *the big wall* was often used by the entire project team when we needed to discuss or brainstorm a particular part of the system.
 
-##All change
+## All change
 
 After we were all familiar with our particular parts of the build we had a meeting to assign tasks and get started. This was to be a Drupal build, which I was delighted about. At the time I had a fair amount of Drupal experience which would be relevant to this build even if I had not been hired for that task in particular. Then a bomb shell was dropped.
 
 The lead developer on this project assigned roles and said that I would be lead front end dev, over the permanent employee, due to my Drupal experience. She then went on holiday, leaving me in charge of the entire build and a team of five developers. Needless to say, this was a surprise since I had been hired as a junior front end dev. This change of role led to high level meetings and phone calls with the company director and the client, as well as extended calls to the wider project management and client services teams. The technical director soon realised what my role had become and the responsibiltiy I had taken on. Being a contractor I couldn&rsquo;t be promoted so I was given a rate increase consumate with my increased responsibility and work load.
 
-##The build
+## The build
 
 The site itself was a [Drupal](http://drupal.org) 7 build which mainly managed the directory of Gyms. Each gym has a lot of information associated with it, from the initial blurb about the gym to a live timetable of classes pulled from an external API. The main content pages for the gyms were built using [Views](http://drupal.org/project/views) to populate each of the tabs on the interface. The use of navigation tabs was further complicated by the need to pull certain data from an external API. A lot of custom code was needed for this.
 
@@ -33,13 +33,13 @@ Accessing the external API required a large amount of custom code. While I was n
 
 Once registered the user has access to a custom build dashboard. The data for this part of the system was exclusively held in the API so custom pages were added to pull from the API for display inside Drupal. This is how we approached much of the build. I have heard that Drupal is a CMS with framework pretensions, and it is absolutely true. Drupal allowed me to plan and build the normal pages with ease, as it&rsquo;s designed to do as a CMS. It also allowed us to code some complex functionality and output the result inside the template system used to build the entire site. Two very different builds pulled together into a cohesive whole.
 
-##Performance
+## Performance
 
 With most of the site users being logged in to use the custom functionality provided via the API, we had a serious performance issue to address. The main navigation, and sub navigation, was heavily geared towards conversion and as such, was completely different for registered users. This meant that the anonymous page cache was invalid when logged in. We got round this by scaling multiple [Apache](https://httpd.apache.org/) instances to support the load and adding [Nginx](https://www.nginx.com/) in front of that as a caching proxy. Extensive changes were required across the Drupal build, and in the custom code, to set the appropriate headers to allow Nginx to cache various parts of the site, and in some cases, parts of individual pages, for different amounts of time. This was a complex task and as the person with oversight over the entire build I was instrumental is making this work.
 
 Drupal can also generate a huge number of database queries when running and we identified [MySQL](https://www.mysql.com/) as one of our performance bottlenecks. I did as much I could to optimise the views used in the build as well as caching query results but in the end we had to make some code changes to optimise whatever we could. This led to a reduction in the number and complexity of some problem queries. I also looked at the structure of the database and the relationships between the huge number of tables that make up a Drupal install. Indexes were added to the relevant tables on the understanding that there were a lot of database reads, but it didn&rsquo;t get updated that often. This allowed us to put a lot of indexes in the database without much concern for slowing down writes.
 
-##Conclusion
+## Conclusion
 
 When I applied for a junior front end developer job I was looking to gain agency experience and flesh out my portfolio a bit. I got much more than I had bargained for.
 

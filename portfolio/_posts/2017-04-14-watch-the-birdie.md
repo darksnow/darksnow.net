@@ -10,7 +10,7 @@ skills:
  - SVG
 published: yes
 ---
-While working closely with Geoff Baxter, the owner of [Watch the Birdie](http://www.watchthebirdie.co.uk), during the [MV Festival]({% post_url portfolio/2011-11-11-mv-festival %}) we got chatting and eventually the conversation turned to his website. At the time the existing site was getting old and in a creative industry such as wedding videography Geoff felt that the impression it gave was losing him business. All he really wanted was the same information but with a fresh approach, so he gave me free reign to recreate his site from scratch.
+While working closely with Geoff Baxter, the owner of [Watch the Birdie](http://www.watchthebirdie.co.uk), during the [MV Festival](/portfolio/mv-festival) we got chatting and eventually the conversation turned to his website. At the time the existing site was getting old and in a creative industry such as wedding videography Geoff felt that the impression it gave was losing him business. All he really wanted was the same information but with a fresh approach, so he gave me free reign to recreate his site from scratch.
 
 ## Requirements
 

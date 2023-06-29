@@ -18,5 +18,10 @@
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
   <script src="js/svg.js"></script>
   <![endif]-->
+  <script>
+    // Only load analytics on production environment.
+    if (window.location.host !== 'darksnow.net') window.goatcounter = {no_onload: true}
+  </script>
+  <script data-goatcounter="https://analytics.darksnow.net/count" async src="//analytics.darksnow.net/count.js"></script>
   <script type="text/javascript" src="/js/darksnow.js"></script>
 </head>
